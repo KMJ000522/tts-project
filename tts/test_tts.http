@@ -1,0 +1,8 @@
+# test_tts.http
+
+POST http://127.0.0.1:8000/tts/generate/
+Content-Type: application/json
+
+{
+    "text": "Hello, my name is Suno. I am a text to speech model."
+}
