@@ -1,6 +1,6 @@
 import torch
 from transformers import VitsModel, AutoTokenizer
-import scipy.io.wavfile # pyright: ignore[reportMissingImports]
+import scipy.io.wavfile
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -59,6 +59,10 @@ def tts_view(request):
 
             # TTS 변환 시작
             inputs = tokenizer(text, return_tensors="pt")
+            
+            # [중요] 입력 데이터의 타입을 정수(long)로 변환해주는 코드
+            inputs['input_ids'] = inputs['input_ids'].to(torch.long)
+            
             with torch.no_grad():
                 output = model(**inputs).waveform
 

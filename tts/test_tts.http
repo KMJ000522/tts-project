@@ -1,8 +1,8 @@
 # test_tts.http
 
-POST http://127.0.0.1:8000/tts/generate/
+POST https://tts-project-u6rj.onrender.com/tts/
 Content-Type: application/json
 
 {
-    "text": "Hello, my name is Suno. I am a text to speech model."
+    "text": "안녕하세요, 배포에 성공했습니다."
 }
