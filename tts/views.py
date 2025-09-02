@@ -52,8 +52,8 @@ def tts_view(request):
             data = json.loads(request.body)
             text = data.get('text')
 
-            if not text:
-                return JsonResponse({"error": "텍스트를 입력해주세요."}, status=400)
+            if not text or not text.strip():
+                return JsonResponse({"error": "내용이 없는 텍스트는 변환할 수 없습니다."}, status=400)
 
             print(f"요청 수신: {text}")
 
